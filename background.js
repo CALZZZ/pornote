@@ -1,8 +1,11 @@
-// background.js
-
-let imageTop = chrome.runtime.getURL("img/logo_pornote_long.png");
-
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ imageTop });
-  console.log('Default background color set to %cgreen color:'+imageTop );
+    console.log("The extension was installed");
+
+    // store the default background color
+    chrome.storage.sync.set({ backgroundColor: "#222222" });
+    console.log("The default background color was set");
+
+    // is pornote activated
+    chrome.storage.sync.set({ isPornoteActivated: false });
+    console.log("The default pornote activation was set");
 });
