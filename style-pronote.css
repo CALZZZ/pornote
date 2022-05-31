@@ -1,0 +1,36 @@
+:root {
+    --customColorPrimary: rgb(35,35,35);
+    --customColorSecondary: rgb(50,50,50);
+    --customColorTerciary: rgb(255,127,0);
+    
+}
+
+p, h3, .wrap h4, .wrap span, .as-info-light, .widget, table .ie-ellipsis, .PetitEspaceDroit, .ObjetBandeauEspace {
+    color: white!important;
+}
+
+.ie-chips {
+    color: black!important;
+}
+
+/* Fond primaire */
+.ObjetBandeauEspace {
+    background-color: var(--customColorPrimary)!important;
+}
+
+/* Fond Connexion */
+.ImageFond {
+    background-image: none!important;
+    background-color: var(--customColorPrimary)!important;
+}
+
+/* Fond Pronote*/
+.AffichagePageAccueil {
+    background-image: none!important;
+    background-color: var(--customColorPrimary)!important;
+}
+
+/* Carte */
+.widget {
+    background-color: var(--customColorSecondary)!important;
+}

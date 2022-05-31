@@ -9,11 +9,7 @@ chrome.storage.sync.get("isPornoteActivated", (data) => {
 
 // When the button is clicked
 switchButton.addEventListener("change", async() => {
-
     if (switchButton.checked) {
-        console.log("button activated");
-        chrome.storage.sync.set({ isPornoteActivated: true });
-
         // inject setPageBackgroundColor into current page
         let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         chrome.scripting.executeScript({
@@ -22,9 +18,6 @@ switchButton.addEventListener("change", async() => {
         });
 
     } else {
-        console.log("button deactivated");
-        chrome.storage.sync.set({ isPornoteActivated: false });
-
         // inject setPageBackgroundColor into current page
         let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         chrome.scripting.executeScript({
@@ -36,7 +29,8 @@ switchButton.addEventListener("change", async() => {
 
 // The body of this function will be executed as a content script inside the current page
 function activePornote() {
-    console.log("active pornote");
+  chrome.storage.sync.set({ isPornoteActivated: true });
+  console.log("button activated");
 
     chrome.storage.sync.get([
         'customLogo',
@@ -92,7 +86,8 @@ function activePornote() {
 
 
 function deactivePornote() {
-    console.log("deactivate pornote");
+    chrome.storage.sync.set({ isPornoteActivated: false });
+    console.log("button deactivated");
 
     // image logo
     const imgTop = document.getElementsByClassName('Image_Logo_PronoteBarreHaut')[0];
