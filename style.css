@@ -1,6 +1,8 @@
 :root {
-    --main-bg: rgb(30, 30, 30);
-    --main-color: rgb(245, 245, 245);
+    --customBgPrimary: rgb(0,0,0);
+    --customBgSecondary: rgb(27,27,27);
+    --customBgTerciary: rgb(37,37,37);
+    --customColorPrimary: #FF9000;
 }
 
 * {
@@ -9,37 +11,48 @@
 
 html,
 body {
-    min-width: 20rem;
-    min-height: 8rem;
-    padding: .5rem;
-    background-color: var(--main-bg);
-    color: var(--main-color);
-}
-
-#main h1 {
-    font-size: 1.2rem;
+    min-width: 15rem;
+    padding: .5rem .75rem .3rem .75rem;
+    background-color: var(--customBgPrimary);
+    color: white;
 }
 
 #main .pornote-logo {
     position: relative;
-    height: 4rem;
+    width: 100%;
+    margin-bottom: 1.2rem;
 }
 
 #main .pornote-logo img {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    height: 100%;
+    width: 60%;
 }
-
+#main .info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: .4rem;
+}
+#main .info h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-right: .8rem;
+}
+#main .info h1 span {
+  font-weight: 400;
+  font-size: 1.05rem;
+}
 
 /* The switch - the box around the slider */
 
 .switch {
     position: relative;
-    display: inline-block;
-    width: 2.6rem;
-    height: 1.4rem;
+    display: block;
+    width: 2.2rem;
+    height: 1.2rem;
+    top: .1rem;
   }
   
   /* Hide default HTML checkbox */
@@ -67,8 +80,8 @@ body {
 .slider:before {
     position: absolute;
     content: "";
-    height: 1.1rem;
-    width: 1.1rem;
+    height: .9rem;
+    width: .9rem;
     left: .15rem;
     bottom: .15rem;
     background-color: white;
@@ -85,9 +98,9 @@ input:focus+.slider {
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(1.1rem);
-    -ms-transform: translateX(1.1rem);
-    transform: translateX(1.1rem);
+    -webkit-transform: translateX(.9rem);
+    -ms-transform: translateX(.9rem);
+    transform: translateX(.9rem);
   }
   
   /* Rounded sliders */
@@ -97,4 +110,11 @@ input:focus+.slider {
   
   .slider.round:before {
     border-radius: 50%;
+}
+
+footer {
+  margin-top: 1rem;
+  text-align: center;
+  color: rgb(120,120,120);
+  font-size: .8rem;
 }

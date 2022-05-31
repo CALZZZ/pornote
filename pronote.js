@@ -32,4 +32,4 @@ function activePornote() {
       });
   }
 
-  setTimeout(activePornote, 3000);
+  setTimeout(activePornote, 5000);

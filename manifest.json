@@ -29,7 +29,8 @@
     },
     "web_accessible_resources": [{
         "resources": [
-            "img/logo_pornote_long.png"
+            "img/logo_pornote_long.png",
+            "img/logo_pornote_real.png"
         ],
         "matches": [
             "<all_urls>"

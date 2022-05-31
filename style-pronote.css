@@ -1,36 +1,90 @@
 :root {
-    --customColorPrimary: rgb(35,35,35);
-    --customColorSecondary: rgb(50,50,50);
-    --customColorTerciary: rgb(255,127,0);
-    
+    --customBgPrimary: rgb(0,0,0);
+    --customBgSecondary: rgb(27,27,27);
+    --customBgTerciary: rgb(37,37,37);
+    --customColorPrimary: #FF9000;
 }
 
-p, h3, .wrap h4, .wrap span, .as-info-light, .widget, table .ie-ellipsis, .PetitEspaceDroit, .ObjetBandeauEspace {
+* {
+    --theme-claire: var(--customBgTerciary);
+    --theme-claire-rgb: 238, 215, 204;
+    --theme-claire-scaleMoins50: #a65b37;
+    --theme-claire-scaleMoins40: #c26f47;
+    --theme-claire-scaleMoins20: #d8a38a;
+    --theme-claire-scaleMoins2: #ecd2c5;
+    --theme-claire-scalePlus10: #f0dbd1;
+    --theme-claire-scalePlus20: #f1dfd6;
+    --theme-claire-scalePlus60: #f8efeb;
+    --theme-moyen1: var(--customColorPrimary)!important;
+    --theme-moyen1-rgb: 250, 185, 157;
+    --theme-moyen1-scaleMoins50: #c2410a;
+    --theme-moyen1-scaleMoins40: #e84e0c;
+    --theme-moyen1-scaleMoins20: #f68250;
+    --theme-moyen1-scaleMoins2: #fab395;
+    --theme-moyen1-scalePlus10: #fbc0a7;
+    --theme-moyen1-scalePlus20: #fbc7b1;
+    --theme-moyen1-scalePlus60: #fde3d8;
+    --theme-foncee: var(--customColorPrimary)!important;
+    --theme-foncee-rgb: 208, 87, 34;
+    --theme-foncee-scaleMoins50: #682c11;
+    --theme-foncee-scaleMoins40: #7d3414;
+    --theme-foncee-scaleMoins20: #a6461b;
+    --theme-foncee-scaleMoins2: #cc5521;
+    --theme-foncee-scalePlus10: #dd6530;
+    --theme-foncee-scalePlus20: #e17647;
+    --theme-foncee-scalePlus60: #f0baa3;
+    --theme-sombre: blue;
+    --theme-sombre-rgb: 172, 64, 17;
+    --theme-sombre-scaleMoins50: #562009;
+    --theme-sombre-scaleMoins40: #67260a;
+    --theme-sombre-scaleMoins20: #8a330e;
+    --theme-sombre-scaleMoins2: #a93f11;
+    --theme-sombre-scalePlus10: #c94b14;
+    --theme-sombre-scalePlus20: #e65617;
+    --theme-sombre-scalePlus60: #f3aa8a;
+}
+
+
+p, h3, h4, .wrap span, .as-info-light, .widget, table .ie-ellipsis, .PetitEspaceDroit,
+.ObjetBandeauEspace, .precedenteConnexion {
     color: white!important;
 }
 
-.ie-chips {
-    color: black!important;
+.objetBandeauEntete_secondmenu .menu-principal_niveau1 .item-menu_niveau1.selected, .item-menu_niveau0.item-selected  {
+    color: var(--theme-foncee)!important;
+    background-color: var(--customBgTerciary)!important;
 }
-
 /* Fond primaire */
 .ObjetBandeauEspace {
-    background-color: var(--customColorPrimary)!important;
+    background-color: var(--customBgPrimary)!important;
+}
+
+/* Fond secondaire */
+.objetBandeauEntete_menu {
+    background-color: var(--customBgSecondary)!important;
+}
+
+/* Fond terciaire */
+.objetBandeauEntete_secondmenu, .ObjetGrilleCours, .ie-chips, .ie-chips.tag-style::after, .ObjetBandeauPied,
+.ibp-pill {
+    background: var(--customBgTerciary)!important;
+    background: linear-gradient(144deg, var(--customBgTerciary) 0%, var(--customBgTerciary) 100%)!important;
+    background-color: var(--customBgTerciary)!important;
 }
 
 /* Fond Connexion */
 .ImageFond {
     background-image: none!important;
-    background-color: var(--customColorPrimary)!important;
+    background-color: var(--customBgPrimary)!important;
 }
 
 /* Fond Pronote*/
 .AffichagePageAccueil {
     background-image: none!important;
-    background-color: var(--customColorPrimary)!important;
+    background-color: var(--customBgPrimary)!important;
 }
 
 /* Carte */
 .widget {
-    background-color: var(--customColorSecondary)!important;
+    background-color: var(--customBgSecondary)!important;
 }

@@ -1,4 +1,4 @@
-const customLogo = "url(" + chrome.runtime.getURL('img/logo_pornote_long.png') + ")";
+const customLogo = "url(" + chrome.runtime.getURL('img/logo_pornote_real.png') + ")";
 const customColorPrimary = 'rgb(35,35,35)'
 const customColorSecondary = 'rgb(50,50,50)'
 const customColorTerciary = 'rgb(255,127,0)'
