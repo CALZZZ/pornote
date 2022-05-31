@@ -8,23 +8,57 @@ switchTheme.addEventListener("change", async () => {
   if (switchTheme.checked) {
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      function: setPageBackgroundColor,
+      function: modifier
     });
   }
 });
 
 // The body of this function will be executed as a content script inside the
 // current page
-function setPageBackgroundColor() {
-  chrome.storage.sync.get("imageTop", ({ imageTop }) => {
-    let imgTop = document.getElementsByClassName('Image_Logo_PronoteBarreHaut')[0]
-    imgTop.style.backgroundImage = "url("+chrome.runtime.getURL('img/logo_pornote_long.png')+")";
-    document.getElementsByClassName('ImageFond')[0].style.backgroundImage = '';
-    document.getElementsByClassName('ImageFond')[0].style.backgroundColor = 'rgb(35,35,35)';
-    let avecMain = document.getElementsByClassName('AvecMain');
-    for (var i = 0; i < avecMain.length; i++) {
-      avecMain[i].style.display = "none";
-    }
+function modifier() {
+  // On récupère les variable de background.js
+  chrome.storage.sync.get([
+      'customLogo',
+      'customColorPrimary',
+      'customColorSecondary',
+      'customColorTerciary'
+    ], function(param) {
+
+      // Logo en haut à droite
+      const imgTop = document.getElementsByClassName('Image_Logo_PronoteBarreHaut')[0]
+      imgTop.style.backgroundImage = param.customLogo
+
+      // Element principal de la page
+      const div = document.getElementById('div')
+
+      // Image au milieu sur la page de connexion
+      const imgMid = div.children[1].children[1] // Cibler l'image au milieu sur le vrai site
+      //const imgMid = div.children[1].children[4] // Cibler l'image au milieu sur le site de test
+      if (typeof(imgMid) != 'undefined' && imgMid != null) {
+        imgMid.style.display = "none"
+      }
+
+      // Fond sur la page de connexion
+      const imageFond = document.getElementsByClassName('ImageFond')[0]
+      if (typeof(imageFond) != 'undefined' && imageFond != null) {
+        imageFond.style.backgroundImage = '';
+        imageFond.style.backgroundColor = param.customColorPrimary
+      }
+
+      // Changer le fond sur la page principale
+      var bgMain = document.getElementById('GInterface.Instances[2]_defaut_')
+      bgMain.style.backgroundImage = ''
+      bgMain.style.backgroundColor = param.customColorPrimary
+
+        var x = document.getElementsByTagName('article')
+        for (var i=0, max=x.length; i < max; i++) {
+          // Do something with the element here
+          x[i].style.backgroundColor = param.customColorSecondary;
+        }
+
+        //rgb(242, 242, 242)
+        //console.log(all[i].style.backgroundColor)
+
   });
 }
 
