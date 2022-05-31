@@ -1,11 +1,15 @@
+const customLogo = "url(" + chrome.runtime.getURL('img/logo_pornote_long.png') + ")";
+const customColorPrimary = 'rgb(35,35,35)'
+const customColorSecondary = 'rgb(50,50,50)'
+const customColorTerciary = 'rgb(255,127,0)'
+
 chrome.runtime.onInstalled.addListener(() => {
     console.log("The extension was installed");
 
-    // store the default background color
-    chrome.storage.sync.set({ backgroundColor: "#222222" });
-    console.log("The default background color was set");
+    chrome.storage.sync.set({ customLogo });
+    chrome.storage.sync.set({ customColorPrimary });
+    chrome.storage.sync.set({ customColorSecondary });
+    chrome.storage.sync.set({ customColorTerciary });
 
-    // is pornote activated
-    chrome.storage.sync.set({ isPornoteActivated: false });
-    console.log("The default pornote activation was set");
+    chrome.storage.sync.set({ extensionEnabled: false });
 });
