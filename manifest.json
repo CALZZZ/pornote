@@ -3,12 +3,17 @@
     "description": "L'application pour le meilleur des professeur de NSI.",
     "version": "1.0",
     "manifest_version": 3,
-    "permissions": ["storage", "activeTab", "scripting"],
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
     "background": {
         "service_worker": "background.js"
     },
     "action": {
         "default_popup": "popup.html",
+        "default_title": "Activer Pornote",
         "default_icon": {
             "16": "/img/logo_pornote16.png",
             "32": "/img/logo_pornote32.png",
@@ -22,16 +27,12 @@
         "48": "/img/logo_pornote48.png",
         "128": "/img/logo_pornote128.png"
     },
-    "web_accessible_resources": [
-        {
-          "resources": [
-            "*.html",
-            "*.css",
+    "web_accessible_resources": [{
+        "resources": [
             "img/logo_pornote_long.png"
-          ],
-          "matches": [
+        ],
+        "matches": [
             "<all_urls>"
-          ]
-        }
-    ]
+        ]
+    }]
 }

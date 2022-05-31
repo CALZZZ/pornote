@@ -1,24 +1,30 @@
 :root {
-    --main-bg: rgb(30,30,30);
-    --main-color: rgb(245,245,245);
+    --main-bg: rgb(30, 30, 30);
+    --main-color: rgb(245, 245, 245);
 }
+
 * {
     margin: 0;
 }
-html, body {
+
+html,
+body {
     min-width: 20rem;
     min-height: 8rem;
     padding: .5rem;
     background-color: var(--main-bg);
     color: var(--main-color);
 }
+
 #main h1 {
     font-size: 1.2rem;
 }
-#main .pornote-logo{
+
+#main .pornote-logo {
     position: relative;
     height: 4rem;
 }
+
 #main .pornote-logo img {
     position: relative;
     left: 50%;
@@ -26,7 +32,9 @@ html, body {
     height: 100%;
 }
 
+
 /* The switch - the box around the slider */
+
 .switch {
     position: relative;
     display: inline-block;
@@ -39,10 +47,12 @@ html, body {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* The slider */
-  .slider {
+}
+
+
+/* The slider */
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -52,9 +62,9 @@ html, body {
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 1.1rem;
@@ -64,13 +74,13 @@ html, body {
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked+.slider {
     background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
   }
   
@@ -87,4 +97,4 @@ html, body {
   
   .slider.round:before {
     border-radius: 50%;
-  }
+}

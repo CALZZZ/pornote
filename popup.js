@@ -1,65 +1,103 @@
 // Initialize button with user's preferred color
-// Initialize button with user's preferred color
-let switchTheme = document.getElementById("switchTheme");
+let switchButton = document.getElementById("switchTheme");
 
-// When the button is clicked, inject setPageBackgroundColor into current page
-switchTheme.addEventListener("change", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (switchTheme.checked) {
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      function: modifier
-    });
-  }
+chrome.storage.sync.get("isPornoteActivated", (data) => {
+    if (data.isPornoteActivated) {
+        switchButton.checked = true;
+    }
 });
 
-// The body of this function will be executed as a content script inside the
-// current page
-function modifier() {
-  // On récupère les variable de background.js
-  chrome.storage.sync.get([
-      'customLogo',
-      'customColorPrimary',
-      'customColorSecondary',
-      'customColorTerciary'
+// When the button is clicked
+switchButton.addEventListener("change", async() => {
+
+    if (switchButton.checked) {
+        console.log("button activated");
+        chrome.storage.sync.set({ isPornoteActivated: true });
+
+        // inject setPageBackgroundColor into current page
+        let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            function: activePornote,
+        });
+
+    } else {
+        console.log("button deactivated");
+        chrome.storage.sync.set({ isPornoteActivated: false });
+
+        // inject setPageBackgroundColor into current page
+        let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            function: deactivePornote,
+        });
+    }
+});
+
+// The body of this function will be executed as a content script inside the current page
+function activePornote() {
+    console.log("active pornote");
+
+    chrome.storage.sync.get([
+        'customLogo',
+        'customColorPrimary',
+        'customColorSecondary',
+        'customColorTerciary'
     ], function(param) {
 
-      // Logo en haut à droite
-      const imgTop = document.getElementsByClassName('Image_Logo_PronoteBarreHaut')[0]
-      imgTop.style.backgroundImage = param.customLogo
+        // Logo en haut à droite
+        const imgTop = document.getElementsByClassName('Image_Logo_PronoteBarreHaut')[0]
+        imgTop.style.backgroundImage = param.customLogo
 
-      // Element principal de la page
-      const div = document.getElementById('div')
-
-      // Image au milieu sur la page de connexion
-      const imgMid = div.children[1].children[1] // Cibler l'image au milieu sur le vrai site
-      //const imgMid = div.children[1].children[4] // Cibler l'image au milieu sur le site de test
-      if (typeof(imgMid) != 'undefined' && imgMid != null) {
-        imgMid.style.display = "none"
-      }
-
-      // Fond sur la page de connexion
-      const imageFond = document.getElementsByClassName('ImageFond')[0]
-      if (typeof(imageFond) != 'undefined' && imageFond != null) {
-        imageFond.style.backgroundImage = '';
-        imageFond.style.backgroundColor = param.customColorPrimary
-      }
-
-      // Changer le fond sur la page principale
-      var bgMain = document.getElementById('GInterface.Instances[2]_defaut_')
-      bgMain.style.backgroundImage = ''
-      bgMain.style.backgroundColor = param.customColorPrimary
-
-        var x = document.getElementsByTagName('article')
-        for (var i=0, max=x.length; i < max; i++) {
-          // Do something with the element here
-          x[i].style.backgroundColor = param.customColorSecondary;
+        // changer le gif
+        gif_element_ids = ["id_16", "id_8_image"] // id des gifs sur les différentes pages
+        const gif = document.querySelectorAll(gif_element_ids.map(id => `#${id}`).join(', '))[0];
+        if (gif) {
+            const width = gif.clientWidth;
+            gif.src = "https://attraptemps.fr/wp-content/uploads/2017/12/poste-developpeur-integrateur.gif"; // TODO : a stocker en local
+            gif.style.width = `${width}px`;
+            gif.style.height = 'auto';
         }
 
-        //rgb(242, 242, 242)
-        //console.log(all[i].style.backgroundColor)
+        // Fond sur la page de connexion
+        const imageFond = document.getElementsByClassName('ImageFond')[0]
+        if (imageFond) {
+            imageFond.style.backgroundImage = 'none';
+            imageFond.style.backgroundColor = param.customColorPrimary;
+        }
 
-  });
+        // Changer le fond sur la page principale
+        var bgMain = document.getElementById('GInterface.Instances[2]_defaut_')
+        if (bgMain) {
+            bgMain.style.backgroundImage = 'none';
+            bgMain.style.backgroundColor = param.customColorPrimary;
+        }
+
+        // card
+        var x = document.querySelectorAll('.widget')
+        for (var i = 0; i < x.length; i++) {
+            x[i].style.backgroundColor = param.customColorSecondary;
+            // text color
+            x[i].style.color = "white";
+        }
+
+        // changer le titre de la page
+        const name = document.querySelector('.ibe_util_texte.ibe_actif');
+        if (name) {
+            console.log(name);
+            name.innerHTML = "Espace Professeurs - LE BOSS";
+        }
+    });
+}
+
+
+function deactivePornote() {
+    console.log("deactivate pornote");
+
+    // image logo
+    const imgTop = document.getElementsByClassName('Image_Logo_PronoteBarreHaut')[0];
+    url = "	https://0451462v.index-education.net/pronote/FichiersRessource/LogoPronoteBarreHaut.png"
+    imgTop.style.backgroundImage = `url(${url})`;
 }
 
 
