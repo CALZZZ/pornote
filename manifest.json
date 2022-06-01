@@ -29,8 +29,6 @@
             "img/logo_pornote_real.png",
             "img/on_bosse_en_nsi.webp"
         ],
-        "matches": [
-            "https://*.index-education.net/pronote/*"
-        ]
+        "matches": ["https://*.index-education.net/*"]
     }]
 }
