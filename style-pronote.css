@@ -1,7 +1,7 @@
 :root {
-    --customBgPrimary: rgb(0,0,0);
-    --customBgSecondary: rgb(27,27,27);
-    --customBgTerciary: rgb(37,37,37);
+    --customBgPrimary: rgb(0, 0, 0);
+    --customBgSecondary: rgb(27, 27, 27);
+    --customBgTerciary: rgb(37, 37, 37);
     --customColorPrimary: #FF9000;
 }
 
@@ -45,46 +45,101 @@
 }
 
 
-p, h3, h4, .wrap span, .as-info-light, .widget, table .ie-ellipsis, .PetitEspaceDroit,
-.ObjetBandeauEspace, .precedenteConnexion {
+/* global */
+
+.Image_Logo_PronoteBarreHaut {
+    background-image: url("chrome-extension://__MSG_@@extension_id__/img/logo_pornote_real.png") !important;
+    margin-right: 20px;
+}
+
+.Image_flagFR {
+    display: none !important;
+}
+
+
+/* page connexion */
+
+.ImageFond {
+    background: var(--customBgPrimary)!important;
+}
+
+#id_16,
+#id_8_image {
+    content: url('chrome-extension://__MSG_@@extension_id__/img/on_bosse_en_nsi.webp');
+    width: 600px;
+    margin-left: 30px;
+    height: auto !important;
+}
+
+
+/* page accueil */
+
+p,
+h3,
+h4,
+h5,
+textarea,
+.wrap span,
+.as-info-light,
+.widget,
+table .ie-ellipsis,
+.PetitEspaceDroit,
+.ObjetBandeauEspace,
+.precedenteConnexion {
     color: white!important;
 }
 
-.objetBandeauEntete_secondmenu .menu-principal_niveau1 .item-menu_niveau1.selected, .item-menu_niveau0.item-selected  {
+.objetBandeauEntete_secondmenu .menu-principal_niveau1 .item-menu_niveau1.selected,
+.item-menu_niveau0.item-selected {
     color: var(--theme-foncee)!important;
     background-color: var(--customBgTerciary)!important;
 }
+
+
 /* Fond primaire */
+
 .ObjetBandeauEspace {
     background-color: var(--customBgPrimary)!important;
 }
 
+
 /* Fond secondaire */
+
 .objetBandeauEntete_menu {
     background-color: var(--customBgSecondary)!important;
 }
 
+
 /* Fond terciaire */
-.objetBandeauEntete_secondmenu, .ObjetGrilleCours, .ie-chips, .ie-chips.tag-style::after, .ObjetBandeauPied,
+
+.objetBandeauEntete_secondmenu,
+.ObjetGrilleCours,
+.ie-chips,
+.ie-chips.tag-style::after,
+.ObjetBandeauPied,
 .ibp-pill {
     background: var(--customBgTerciary)!important;
     background: linear-gradient(144deg, var(--customBgTerciary) 0%, var(--customBgTerciary) 100%)!important;
     background-color: var(--customBgTerciary)!important;
 }
 
-/* Fond Connexion */
-.ImageFond {
-    background-image: none!important;
-    background-color: var(--customBgPrimary)!important;
-}
 
 /* Fond Pronote*/
+
 .AffichagePageAccueil {
-    background-image: none!important;
-    background-color: var(--customBgPrimary)!important;
+    background: var(--customBgPrimary)!important;
 }
 
+
 /* Carte */
+
 .widget {
     background-color: var(--customBgSecondary)!important;
+}
+
+
+/* bouton rendre devoir */
+
+.taf-btn-conteneur a {
+    color: white!important;
 }
