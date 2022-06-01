@@ -8,9 +8,6 @@
         "activeTab",
         "scripting"
     ],
-    "background": {
-        "service_worker": "background.js"
-    },
     "action": {
         "default_popup": "popup.html",
         "default_title": "Activer Pornote",
@@ -29,17 +26,11 @@
     },
     "web_accessible_resources": [{
         "resources": [
-            "img/logo_pornote_long.png",
-            "img/logo_pornote_real.png"
+            "img/logo_pornote_real.png",
+            "img/on_bosse_en_nsi.webp"
         ],
         "matches": [
-            "<all_urls>"
+            "https://*.index-education.net/pronote/*"
         ]
-    }],
-    "content_scripts": [{
-        "matches": ["https://*.index-education.net/pronote/*"],
-        "js": ["pronote.js"],
-        "css": ["style-pronote.css"],
-        "run_at": "document_start"
     }]
 }
